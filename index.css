@@ -64,6 +64,44 @@ button:hover {
 
 .chosen-color {
   width: 20%;
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  background: rgb(235, 235, 235);
+  font-size: 0.75em;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1em;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-50%);
+  cursor: context-menu;
+}
+
+@keyframes showAndHideTooltip {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 
 #colors-values {
@@ -76,4 +114,9 @@ button:hover {
   place-items: center;
   font-weight: 500;
   font-size: 0.75em;
+  padding: 2em;
+}
+
+.colors-values::selection {
+  background: rgb(200, 200, 200);
 }
