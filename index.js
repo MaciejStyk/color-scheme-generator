@@ -13,22 +13,18 @@ const apiUrl = "https://www.thecolorapi.com/scheme";
 
 renderColors();
 
-function renderColors() {
-  getColorSchemeArrayFrom(url());
-  setTimeout(() => {
-    fillPageWithColorScheme();
-  }, 500);
+async function renderColors() {
+  await getColorSchemeArrayFrom(url());
+  fillPageWithColorScheme();
 }
 
-function getColorSchemeArrayFrom(url) {
+async function getColorSchemeArrayFrom(url) {
   colorSchemeArray = [];
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      for (let color of data.colors) {
-        colorSchemeArray.push(color.hex.value);
-      }
-    });
+  const response = await fetch(url);
+  const data = await response.json();
+  for (let color of data.colors) {
+    colorSchemeArray.push(color.hex.value);
+  }
 }
 
 function url() {
